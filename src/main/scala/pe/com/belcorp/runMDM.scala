@@ -30,6 +30,7 @@ object runMDM {
       case "sap" => executeSap(spark, params)
     }
     spark.stop()
+
   }
 
   def executeSap(spark: SparkSession, params: Arguments): Unit = {
@@ -136,9 +137,7 @@ object runMDM {
       .mode("overwrite").save()
   }
 
-  def getDate(): String = {
-    val format = new SimpleDateFormat("dd-MM-yyyy")
-    format.format(Calendar.getInstance().getTime())
-  }
+
+
 
 }
