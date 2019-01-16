@@ -1,6 +1,5 @@
 package pe.com.belcorp.tables
 
-import org.apache.spark.sql.functions.col
 import org.apache.spark.sql.{DataFrame, SparkSession}
 
 object MDMTables {
@@ -10,11 +9,10 @@ object MDMTables {
       spark.read
         .format("csv")
         .option("header", "true")
-        .load(path).na.fill("")
+        .load(path)//.na.fill("")  ya no va aqui por problemas con el insert en el driver
         /*        .select(columnsToSelect: _*)*/
         .cache()
     }
-
   }
 
 }

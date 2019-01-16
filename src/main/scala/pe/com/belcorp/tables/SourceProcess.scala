@@ -13,14 +13,13 @@ class SourceProcess(val spark: SparkSession, val params: Arguments) {
   def executeSource(source: String): Unit = {
     getNewDataframe(source) match {
       case Some(dataFrame) => processSource(dataFrame, source)
-      case None => return
+      case None =>
     }
-
   }
 
   def processSource(csvDF: DataFrame, source: String): Unit = {
-    //insert redshift
-    val sourceDF = newDataframeFormat(csvDF, source)
+    writeToRedshift(csvDF, ConfigFactory.load().getString(s"redshiftConnection.${params.env()}"), ConfigFactory.load().getString(s"tempS3Directory.${params.env()}"), ConfigFactory.load().getString(s"redshiftTAbles.$source"))
+    val sourceDF = newDataframeFormat(csvDF.na.fill(""), source) // uses empty  String instead of null values before the join
     val MDMtableDF = MongoSpark.load(spark, readConfig)
     if (emptyDT(MDMtableDF)) {
       MongoSpark.save(sourceDF.write.mode("append"), writeConfig)
@@ -35,20 +34,15 @@ class SourceProcess(val spark: SparkSession, val params: Arguments) {
   def getNewDataframe(source: String): Option[DataFrame] = {
     var result: Option[DataFrame] = None
     try {
-      val path = ConfigFactory.load().getString(s"csvPath${params.env()}.$source") + "-" + params.date() + "-*.csv"
+      val path = ConfigFactory.load().getString(s"${source}Path.${params.env()}") + "-" + params.date() + "-*.csv"
       result = Some(new CSVBase(path).get(spark))
     } catch {
-      case (e: Exception) => {
+      case e: Exception => {
         println(s"Error reading csv. reason: ${e}")
       }
     }
     result
   }
-
-  /*  def getNewDataframe(source: String): DataFrame = {
-      val path = ConfigFactory.load().getString(s"csvPath${params.env()}.$source") + "-" + params.date() + "-*.csv"
-      new CSVBase(path).get(spark)
-    }*/
 
   def insertNewRecordsToMongo(sourceDF: DataFrame, MDMtableOldDF: DataFrame): Unit = {
     val MDMjoinToInsertDF = sourceDF.join(MDMtableOldDF, sourceDF.col("cod_material") === MDMtableOldDF.col("cod_material"), "left_anti")
@@ -102,6 +96,4 @@ class SourceProcess(val spark: SparkSession, val params: Arguments) {
       .option("postactions", s"$postActionsQuery")
       .mode("overwrite").save()
   }
-
-  //https://stackoverflow.com/questions/31782763/how-to-use-regex-to-include-exclude-some-input-files-in-sc-textfile
 }

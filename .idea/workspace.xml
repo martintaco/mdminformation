@@ -2,48 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ec2cf6fa-d478-45cd-882a-49dd66565cd0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.conf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.conf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/pe/com/belcorp/runMDM.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/pe/com/belcorp/runMDM.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/pe/com/belcorp/tables/SourceProcess.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/pe/com/belcorp/tables/SourceProcess.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/pe/com/belcorp/tables/tables.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/pe/com/belcorp/tables/tables.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/pe/com/belcorp/util/Arguments.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/pe/com/belcorp/util/Arguments.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/pe/com/belcorp/util/DataframeUtil.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/pe/com/belcorp/util/DataframeUtil.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/application.conf" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/application.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/runMDM$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/runMDM$.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/runMDM.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/runMDM.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/tables/MDMTables$CSVBase.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/tables/MDMTables$CSVBase.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/Arguments$$anonfun$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/Arguments$$anonfun$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/Arguments$$anonfun$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/Arguments$$anonfun$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/Arguments.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/Arguments.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$anonfun$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$anonfun$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$anonfun$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$anonfun$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$anonfun$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$anonfun$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$anonfun$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$anonfun$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$anonfun$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$anonfun$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$anonfun$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$anonfun$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$anonfun$contentRuleC$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$anonfun$contentRuleC$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$anonfun$contentRuleWR$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$anonfun$contentRuleWR$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$anonfun$fillDataframe$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$anonfun$fillDataframe$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$anonfun$getIdS$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$anonfun$getIdS$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$anonfun$getTallaPreviaC$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$anonfun$getTallaPreviaC$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$anonfun$getVideoLinkWR$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$anonfun$getVideoLinkWR$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$anonfun$productDescriptionRuleC$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$anonfun$productDescriptionRuleC$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$anonfun$productDescriptionRuleWR$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$anonfun$productDescriptionRuleWR$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$anonfun$productNameRuleC$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$anonfun$productNameRuleC$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$anonfun$productNameRuleWR$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$anonfun$productNameRuleWR$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$anonfun$titleRuleC$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$anonfun$titleRuleC$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$anonfun$titleRuleWR$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$anonfun$titleRuleWR$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$typecreator1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$typecreator1$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$typecreator2$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$typecreator2$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$typecreator3$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$typecreator3$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$typecreator4$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$typecreator4$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$typecreator5$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$typecreator5$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$typecreator6$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$typecreator6$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$typecreator7$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$typecreator7$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$typecreator8$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame$$typecreator8$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/util/DataframeUtil$mdmDataFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/pe/com/belcorp/tables/SourceProcess.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -107,31 +71,31 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="conf" value="2" />
+          <entry key="conf" value="3" />
           <entry key="config" value="1" />
           <entry key="sbt" value="2" />
-          <entry key="scala" value="10" />
+          <entry key="scala" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="HOCON" value="2" />
+          <entry key="HOCON" value="3" />
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Scala" value="10" />
+          <entry key="Scala" value="14" />
           <entry key="sbt" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="conf" value="485" />
+          <entry key="conf" value="816" />
           <entry key="sbt" value="255" />
-          <entry key="scala" value="4834" />
+          <entry key="scala" value="5214" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HOCON" value="485" />
-          <entry key="Scala" value="4834" />
+          <entry key="HOCON" value="816" />
+          <entry key="Scala" value="5214" />
           <entry key="sbt" value="255" />
         </counts>
       </usages-collector>
@@ -139,13 +103,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/scala/pe/com/belcorp/runMDM.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+            <state relative-caret-position="102">
+              <caret line="6" column="41" lean-forward="true" selection-start-line="6" selection-start-column="41" selection-end-line="6" selection-end-column="41" />
               <folding>
-                <element signature="e#24#77#0" expanded="true" />
+                <element signature="e#24#81#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -154,8 +118,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/scala/pe/com/belcorp/tables/SourceProcess.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="20" column="63" lean-forward="true" selection-start-line="20" selection-start-column="63" selection-end-line="20" selection-end-column="63" />
+            <state relative-caret-position="1219">
+              <caret line="96" column="31" lean-forward="true" selection-start-line="96" selection-start-column="31" selection-end-line="96" selection-end-column="31" />
               <folding>
                 <element signature="e#31#71#0" expanded="true" />
               </folding>
@@ -164,13 +128,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/scala/pe/com/belcorp/util/DataframeUtil.scala">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/application.conf">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3247">
-              <caret line="191" column="61" lean-forward="true" selection-start-line="191" selection-start-column="61" selection-end-line="191" selection-end-column="61" />
-              <folding>
-                <element signature="e#29#69#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-51">
+              <caret line="15" column="78" lean-forward="true" selection-start-line="15" selection-start-column="78" selection-end-line="15" selection-end-column="78" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/scala/pe/com/belcorp/tables/tables.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="17" column="1" lean-forward="true" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -187,11 +157,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>WenXCHfRDCitIqeXvGtG+2puDFXbzRN33W2Y/zfU</find>
-      <find>AKIAJK6A3CSH7NDH2TWA</find>
-      <find>redshift</find>
-      <find>id</find>
-      <find>sourceTable</find>
       <find>nombre_producto</find>
       <find>readRedshift</find>
       <find>codigo_categoriacodigo_categoria</find>
@@ -216,6 +181,11 @@
       <find>desc_producto</find>
       <find>&quot;column&quot;</find>
       <find>column</find>
+      <find>getString</find>
+      <find>csvPath</find>
+      <find>ENV</find>
+      <find>int</find>
+      <find>sourceT</find>
       <find>params</find>
     </findStrings>
   </component>
@@ -228,19 +198,19 @@
         <option value="$PROJECT_DIR$/src/main/scala/pe/com/belcorp/util/tables.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/pe/com/belcorp/util/package.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/pe/com/belcorp/util/SparkUtil.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/pe/com/belcorp/tables/tables.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/pe/com/belcorp/util/DataframeUtil.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/pe/com/belcorp/util/AWSCredentials.scala" />
         <option value="$PROJECT_DIR$/build.sbt" />
         <option value="$PROJECT_DIR$/target/scala-2.11/classes/application.conf" />
-        <option value="$PROJECT_DIR$/src/main/scala/pe/com/belcorp/util/Arguments.scala" />
         <option value="$PROJECT_DIR$/src/main/resources/application.conf" />
+        <option value="$PROJECT_DIR$/src/main/scala/pe/com/belcorp/util/Arguments.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/pe/com/belcorp/tables/SourceProcess.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/pe/com/belcorp/tables/tables.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/pe/com/belcorp/runMDM.scala" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-7" />
     <option name="width" value="360" />
     <option name="height" value="735" />
@@ -258,6 +228,57 @@
               <item name="MDMinformation" type="b2602c69:ProjectViewProjectNode" />
               <item name="mdminformation" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="MDMinformation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mdminformation" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MDMinformation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mdminformation" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MDMinformation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mdminformation" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MDMinformation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mdminformation" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="scala" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MDMinformation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mdminformation" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="scala" type="462c0819:PsiDirectoryNode" />
+              <item name="belcorp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MDMinformation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mdminformation" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="scala" type="462c0819:PsiDirectoryNode" />
+              <item name="belcorp" type="462c0819:PsiDirectoryNode" />
+              <item name="tables" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MDMinformation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mdminformation" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="scala" type="462c0819:PsiDirectoryNode" />
+              <item name="belcorp" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -266,7 +287,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547598266049" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547673494818" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../bcp-shcl-spark-core-feature-shcl-security-lib-implementation" />
   </component>
   <component name="RecentsManager">
@@ -290,7 +311,7 @@
     <configuration name="runMDM" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="pe.com.belcorp.runMDM" />
       <module name="MDMinformation" />
-      <option name="PROGRAM_PARAMETERS" value="--jdbc &quot;jdbc:redshift://10.12.0.94:5439/analitico?user=awsbelcorp&amp;password=Belcorp2019&quot; --tempdir &quot;s3a://belc-bigdata-domain-dlk-qas/dom-personalizacion/caida-promedio/tempRs/holi.txt&quot; --env &quot;DEV&quot; --source &quot;sap&quot; --date &quot;20190105&quot;" />
+      <option name="PROGRAM_PARAMETERS" value="--env &quot;DEV&quot;  --date &quot;20190105&quot;" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="pe.com.belcorp.*" />
@@ -360,7 +381,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21709532" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -371,7 +393,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.23278688" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.26557377" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -430,16 +452,6 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/scala/pe/com/belcorp/util/package.scala" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/application.config" />
-    <entry file="file://$PROJECT_DIR$/src/main/scala/pe/com/belcorp/tables/tables.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="31" lean-forward="true" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
-          <folding>
-            <element signature="e#31#72#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/pe/com/belcorp/util/AWSCredentials.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -454,20 +466,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/pe/com/belcorp/util/SparkUtil.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="56" lean-forward="true" selection-start-line="7" selection-start-column="56" selection-end-line="7" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.conf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="72" lean-forward="true" selection-start-line="16" selection-start-column="72" selection-end-line="16" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/target/scala-2.11/classes/application.conf">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -475,30 +473,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/pe/com/belcorp/util/Arguments.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="19" column="27" lean-forward="true" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
-          <folding>
-            <element signature="e#29#62#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/pe/com/belcorp/util/DataframeUtil.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3247">
-          <caret line="191" column="61" lean-forward="true" selection-start-line="191" selection-start-column="61" selection-end-line="191" selection-end-column="61" />
+        <state relative-caret-position="146">
+          <caret line="12" column="38" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
           <folding>
             <element signature="e#29#69#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/pe/com/belcorp/util/Arguments.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="13" column="25" lean-forward="true" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
+          <folding>
+            <element signature="e#29#62#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/pe/com/belcorp/util/SparkUtil.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="60" lean-forward="true" selection-start-line="10" selection-start-column="60" selection-end-line="10" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/pe/com/belcorp/tables/SourceProcess.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="20" column="63" lean-forward="true" selection-start-line="20" selection-start-column="63" selection-end-line="20" selection-end-column="63" />
+        <state relative-caret-position="1219">
+          <caret line="96" column="31" lean-forward="true" selection-start-line="96" selection-start-column="31" selection-end-line="96" selection-end-column="31" />
           <folding>
             <element signature="e#31#71#0" expanded="true" />
           </folding>
@@ -507,11 +512,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/pe/com/belcorp/runMDM.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+        <state relative-caret-position="102">
+          <caret line="6" column="41" lean-forward="true" selection-start-line="6" selection-start-column="41" selection-end-line="6" selection-end-column="41" />
           <folding>
-            <element signature="e#24#77#0" expanded="true" />
+            <element signature="e#24#81#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-51">
+          <caret line="15" column="78" lean-forward="true" selection-start-line="15" selection-start-column="78" selection-end-line="15" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/pe/com/belcorp/tables/tables.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="1" lean-forward="true" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
         </state>
       </provider>
     </entry>
