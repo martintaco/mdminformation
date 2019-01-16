@@ -1,7 +1,5 @@
 package pe.com.belcorp.tables
 
-import java.text.SimpleDateFormat
-import java.util.Calendar
 import com.typesafe.config.ConfigFactory
 import com.mongodb.spark.MongoSpark
 import org.apache.spark.sql.{DataFrame, SparkSession}
@@ -13,31 +11,52 @@ import pe.com.belcorp.util.DataframeUtil._
 class SourceProcess(val spark: SparkSession, val params: Arguments) {
 
   def executeSource(source: String): Unit = {
-    val sapAllDF = getNewDataframe(source)
-    val sapDF = newDataframeFormat(sapAllDF, source)
+    getNewDataframe(source) match {
+      case Some(dataFrame) => processSource(dataFrame, source)
+      case None => return
+    }
+
+  }
+
+  def processSource(csvDF: DataFrame, source: String): Unit = {
+    //insert redshift
+    val sourceDF = newDataframeFormat(csvDF, source)
     val MDMtableDF = MongoSpark.load(spark, readConfig)
     if (emptyDT(MDMtableDF)) {
-      MongoSpark.save(sapDF.write.mode("append"), writeConfig)
+      MongoSpark.save(sourceDF.write.mode("append"), writeConfig)
     }
     else {
       val MDMtableOldDF = oldDataframeFormat(MDMtableDF).cache()
-      insertNewRecordsToMongo(sapDF, MDMtableOldDF)
-      updateOldRecordsToMongo(sapDF, MDMtableOldDF, source)
+      insertNewRecordsToMongo(sourceDF, MDMtableOldDF)
+      updateOldRecordsToMongo(sourceDF, MDMtableOldDF, source)
     }
   }
 
-  def getNewDataframe(source: String): DataFrame = {
-    val path = ConfigFactory.load().getString(s"csvPath.$source")
-    new CSVBase(path).get(spark)
+  def getNewDataframe(source: String): Option[DataFrame] = {
+    var result: Option[DataFrame] = None
+    try {
+      val path = ConfigFactory.load().getString(s"csvPath${params.env()}.$source") + "-" + params.date() + "-*.csv"
+      result = Some(new CSVBase(path).get(spark))
+    } catch {
+      case (e: Exception) => {
+        println(s"Error reading csv. reason: ${e}")
+      }
+    }
+    result
   }
 
+  /*  def getNewDataframe(source: String): DataFrame = {
+      val path = ConfigFactory.load().getString(s"csvPath${params.env()}.$source") + "-" + params.date() + "-*.csv"
+      new CSVBase(path).get(spark)
+    }*/
+
   def insertNewRecordsToMongo(sourceDF: DataFrame, MDMtableOldDF: DataFrame): Unit = {
-    val MDMjoinToInsertDF = sourceDF.join(MDMtableOldDF, sourceDF.col("codigo_material") === MDMtableOldDF.col("codigo_material"), "left_anti")
-    //MongoSpark.save(MDMjoinToInsertDF.write.mode("append"), writeConfig)
+    val MDMjoinToInsertDF = sourceDF.join(MDMtableOldDF, sourceDF.col("cod_material") === MDMtableOldDF.col("cod_material"), "left_anti")
+    MongoSpark.save(MDMjoinToInsertDF.write.mode("append"), writeConfig)
   }
 
   def updateOldRecordsToMongo(sourceDF: DataFrame, MDMtableOldDF: DataFrame, source: String): Unit = {
-    val MDMjoinToupdateDF = sourceDF.join(MDMtableOldDF, sourceDF.col("codigo_material") === MDMtableOldDF.col("codigo_material"), "inner")
+    val MDMjoinToupdateDF = sourceDF.join(MDMtableOldDF, sourceDF.col("cod_material") === MDMtableOldDF.col("cod_material"), "inner")
     MDMjoinToupdateDF.show(20, false)
     source match {
       case "comunicaciones" => MongoSpark.save(MDMjoinToupdateDF.comunicacionesApplyRules().write.mode("append"), writeConfig)
@@ -85,8 +104,4 @@ class SourceProcess(val spark: SparkSession, val params: Arguments) {
   }
 
   //https://stackoverflow.com/questions/31782763/how-to-use-regex-to-include-exclude-some-input-files-in-sc-textfile
-  def getDate(): String = {
-    val format = new SimpleDateFormat("dd-MM-yyyy")
-    format.format(Calendar.getInstance().getTime())
-  }
 }

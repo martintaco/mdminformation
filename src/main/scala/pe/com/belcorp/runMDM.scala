@@ -1,35 +1,37 @@
 package pe.com.belcorp
 
-import com.typesafe.config.ConfigFactory
 import org.apache.spark.sql.{DataFrame, SparkSession}
 import com.mongodb.spark.MongoSpark
 import com.mongodb.spark.config.{ReadConfig, WriteConfig}
-import org.apache.spark.sql.functions.col
 import pe.com.belcorp.tables.MDMTables.CSVBase
 import pe.com.belcorp.util.DataframeUtil._
-import java.text.SimpleDateFormat
-import java.util.Calendar
+import pe.com.belcorp.tables.SourceProcess
 import pe.com.belcorp.util.Arguments
 import pe.com.belcorp.util.SparkUtil._
 import pe.com.belcorp.util.AWSCredentials
-//import pe.com.belcorp.util.
 
 object runMDM {
 
   System.setProperty("hadoop.home.dir", "C:\\hadoop")
-  val readConfig = ReadConfig(Map("uri" -> "mongodb+srv://adminCMQAS:xpqKt1EcRr3bIf3M@campaignmanager-k2qfs.mongodb.net/mdm_producto.ProductoTest?readPreference=primaryPreferred"))
-  val writeConfig = WriteConfig(Map("uri" -> "mongodb+srv://adminCMQAS:xpqKt1EcRr3bIf3M@campaignmanager-k2qfs.mongodb.net/mdm_producto.ProductoTest"))
+  val readConfig = ReadConfig(Map("uri" -> "mongodb+srv://adminBDInfoServiceQAS:FtzDmZ1hLx2yAFsU@bigdatainfoservice-0hd3l.mongodb.net/info_product.ProductoTest?readPreference=primaryPreferred"))
+  val writeConfig = WriteConfig(Map("uri" -> "mongodb+srv://adminBDInfoServiceQAS:FtzDmZ1hLx2yAFsU@bigdatainfoservice-0hd3l.mongodb.net/info_product.ProductoTest"))
 
   def main(args: Array[String]): Unit = {
     val params = new Arguments(args)
     val spark = getSparkSession("MDM-info")
-    val fuente = "sap"
-    fuente match {
-      case "comunicaciones" => executeComunications(spark)
-      case "webRedes" => executeWebRedes(spark)
-      case "sap" => executeSap(spark, params)
-    }
+    val process = new SourceProcess(spark,params)
+    process.executeSource(s"${params.source()}")
+    process.executeSource("comunicaciones")
+    process.executeSource("webRedes")
     spark.stop()
+
+
+    /*    val fuente = "sap"
+        fuente match {
+          case "comunicaciones" => executeComunications(spark)
+          case "webredes" => executeWebRedes(spark)
+          case "sap" => executeSap(spark, params)
+        }*/
 
   }
 
