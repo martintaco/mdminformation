@@ -18,7 +18,8 @@ class SourceProcess(val spark: SparkSession, val params: Arguments) {
   }
 
   def processSource(csvDF: DataFrame, source: String): Unit = {
-    writeToRedshift(csvDF, ConfigFactory.load().getString(s"redshiftConnection.${params.env()}"), ConfigFactory.load().getString(s"tempS3Directory.${params.env()}"), ConfigFactory.load().getString(s"redshiftTAbles.$source"))
+    //COMMENT WRITE TO RS TO TEST
+    //writeToRedshift(csvDF, ConfigFactory.load().getString(s"redshiftConnection.${params.env()}"), ConfigFactory.load().getString(s"tempS3Directory.${params.env()}"), ConfigFactory.load().getString(s"redshiftTables.$source"))
     val sourceDF = newDataframeFormat(csvDF.na.fill(""), source) // uses empty  String instead of null values before the join
     val MDMtableDF = MongoSpark.load(spark, readConfig)
     if (emptyDT(MDMtableDF)) {
@@ -35,7 +36,9 @@ class SourceProcess(val spark: SparkSession, val params: Arguments) {
     var result: Option[DataFrame] = None
     try {
       val path = ConfigFactory.load().getString(s"${source}Path.${params.env()}") + "-" + params.date() + "-*.csv"
-      result = Some(new CSVBase(path).get(spark))
+      val nuevo = new CSVBase(path).get(spark)
+      nuevo.show(20,false)
+      result = Some(nuevo)
     } catch {
       case e: Exception => {
         println(s"Error reading csv. reason: ${e}")
@@ -45,13 +48,13 @@ class SourceProcess(val spark: SparkSession, val params: Arguments) {
   }
 
   def insertNewRecordsToMongo(sourceDF: DataFrame, MDMtableOldDF: DataFrame): Unit = {
-    val MDMjoinToInsertDF = sourceDF.join(MDMtableOldDF, sourceDF.col("cod_material") === MDMtableOldDF.col("cod_material"), "left_anti")
+    val MDMjoinToInsertDF = sourceDF.join(MDMtableOldDF, sourceDF.col("codsap") === MDMtableOldDF.col("codsap"), "left_anti")
     MongoSpark.save(MDMjoinToInsertDF.write.mode("append"), writeConfig)
   }
 
   def updateOldRecordsToMongo(sourceDF: DataFrame, MDMtableOldDF: DataFrame, source: String): Unit = {
-    val MDMjoinToupdateDF = sourceDF.join(MDMtableOldDF, sourceDF.col("cod_material") === MDMtableOldDF.col("cod_material"), "inner")
-    MDMjoinToupdateDF.show(20, false)
+    val MDMjoinToupdateDF = sourceDF.join(MDMtableOldDF, sourceDF.col("codsap") === MDMtableOldDF.col("codsap"), "inner")
+   // MDMjoinToupdateDF.show(20, false)
     source match {
       case "comunicaciones" => MongoSpark.save(MDMjoinToupdateDF.comunicacionesApplyRules().write.mode("append"), writeConfig)
       case "webRedes" => MongoSpark.save(MDMjoinToupdateDF.webRedesApplyRules().write.mode("append"), writeConfig)

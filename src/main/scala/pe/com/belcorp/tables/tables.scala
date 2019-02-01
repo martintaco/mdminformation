@@ -9,6 +9,7 @@ object MDMTables {
       spark.read
         .format("csv")
         .option("header", "true")
+        .option("encoding", "UTF-8")
         .load(path)//.na.fill("")  ya no va aqui por problemas con el insert en el driver
         /*        .select(columnsToSelect: _*)*/
         .cache()
