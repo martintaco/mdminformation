@@ -29,10 +29,10 @@ object DataframeUtil {
         .getStringList("sap").asScala.toArray
         .map(x => col(x))
       val df1 = df.select(columnsToSelect: _*)
-        .withColumn("id", getIdS(col("CodSap"), col("DesProductoSap"), col("DesGrupoArticulo")))
-        .drop("DesProductoSap")
-        .drop("DesGrupoArticulo")
-        .withColumnRenamed("CodSap", "codsap")
+        .withColumn("id", getIdS(col("codsap"), col("desproductosap"), col("desgrupoarticulo")))
+        .drop("desproductosap")
+        .drop("desgrupoarticulo")
+        /*.withColumnRenamed("CodSap", "codsap")*/
       df1
     }
 
@@ -77,7 +77,7 @@ object DataframeUtil {
 
     def getTallaPreviaC: UserDefinedFunction = udf((descProducto: String) => {
       if (org.apache.commons.lang3.StringUtils.containsIgnoreCase(descProducto, "Medidas")) {
-        descProducto.substring(descProducto.indexOf("Medidas") + 9, descProducto.length)
+        descProducto.substring(descProducto.indexOf("Medidas"), descProducto.length)
       }
       else descProducto.toString
     })
@@ -136,9 +136,11 @@ object DataframeUtil {
         .withColumnRenamed("codcategoriawebredes","codcategoria")
         .withColumnRenamed("desnombreproductowebredes","desnombreproducto")
         .withColumnRenamed("deswebredes","desproducto")
-        .withColumn("deslinkvideo001", getVideoLinkWR(col("deslinkvideo001")))
-        .withColumn("deslinkvideo002", getVideoLinkWR(col("deslinkvideo002")))
-        .withColumn("deslinkvideo003", getVideoLinkWR(col("deslinkvideo003")))
+        .withColumn("deslinkvideoId001", getVideoLinkWR(col("deslinkvideo001")))
+        .withColumn("deslinkvideoId002", getVideoLinkWR(col("deslinkvideo002")))
+        .withColumn("deslinkvideoId003", getVideoLinkWR(col("deslinkvideo003")))
+        .withColumn("deslinkvideoId004", getVideoLinkWR(col("deslinkvideo004")))
+        .withColumn("deslinkvideoId005", getVideoLinkWR(col("deslinkvideo005")))
       df1
     }
 

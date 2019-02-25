@@ -9,8 +9,8 @@ import pe.com.belcorp.util.AWSCredentials
 object runMDM {
 
   System.setProperty("hadoop.home.dir", "C:\\hadoop")
-  val readConfig = ReadConfig(Map("uri" -> "mongodb+srv://adminBDInfoServiceQAS:FtzDmZ1hLx2yAFsU@bigdatainfoservice-0hd3l.mongodb.net/info_product.detalle?readPreference=primaryPreferred"))
-  val writeConfig = WriteConfig(Map("uri" -> "mongodb+srv://adminBDInfoServiceQAS:FtzDmZ1hLx2yAFsU@bigdatainfoservice-0hd3l.mongodb.net/info_product.detalle"))
+  val readConfig = ReadConfig(Map("uri" -> "mongodb+srv://adminBDInfoServiceQAS:FtzDmZ1hLx2yAFsU@bigdatainfoservice-0hd3l.mongodb.net/Analitico.Products?readPreference=primaryPreferred"))
+  val writeConfig = WriteConfig(Map("uri" -> "mongodb+srv://adminBDInfoServiceQAS:FtzDmZ1hLx2yAFsU@bigdatainfoservice-0hd3l.mongodb.net/Analitico.Products"))
 
   def main(args: Array[String]): Unit = {
     val params = new Arguments(args)

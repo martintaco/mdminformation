@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/MDMinformation.iml" filepath="$PROJECT_DIR$/.idea/modules/MDMinformation.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mdminformation-build.iml" filepath="$PROJECT_DIR$/.idea/modules/mdminformation-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MDMinformation-build.iml" filepath="$PROJECT_DIR$/.idea/modules/MDMinformation-build.iml" />
     </modules>
   </component>
 </project>

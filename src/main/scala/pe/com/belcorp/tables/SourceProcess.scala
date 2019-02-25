@@ -1,5 +1,6 @@
 package pe.com.belcorp.tables
 
+import org.apache.spark.sql.types.MetadataBuilder
 import com.typesafe.config.ConfigFactory
 import com.mongodb.spark.MongoSpark
 import org.apache.spark.sql.{DataFrame, SparkSession}
@@ -18,9 +19,11 @@ class SourceProcess(val spark: SparkSession, val params: Arguments) {
   }
 
   def processSource(csvDF: DataFrame, source: String): Unit = {
-    //COMMENT WRITE TO RS TO TEST
-    //writeToRedshift(csvDF, ConfigFactory.load().getString(s"redshiftConnection.${params.env()}"), ConfigFactory.load().getString(s"tempS3Directory.${params.env()}"), ConfigFactory.load().getString(s"redshiftTables.$source"))
+    val csvDFnewChar = addingMaxColumnChar(csvDF,source)
+    //COMMENT WRITE TO RS TO TEST PARA QUE FUNCIONES EL INSERT Y CREATE TABLE
+    writeToRedshift(csvDFnewChar, ConfigFactory.load().getString(s"redshiftConnection.${params.env()}"), ConfigFactory.load().getString(s"tempS3Directory.${params.env()}"), ConfigFactory.load().getString(s"redshiftTables.$source"))
     val sourceDF = newDataframeFormat(csvDF.na.fill(""), source) // uses empty  String instead of null values before the join
+    sourceDF.show(20, false)
     val MDMtableDF = MongoSpark.load(spark, readConfig)
     if (emptyDT(MDMtableDF)) {
       MongoSpark.save(sourceDF.write.mode("append"), writeConfig)
@@ -35,9 +38,9 @@ class SourceProcess(val spark: SparkSession, val params: Arguments) {
   def getNewDataframe(source: String): Option[DataFrame] = {
     var result: Option[DataFrame] = None
     try {
-      val path = ConfigFactory.load().getString(s"${source}Path.${params.env()}") + "-" + params.date() + "-*.csv"
+      val path = ConfigFactory.load().getString(s"${source}Path.${params.env()}") + "-" + params.date() + ".csv"
       val nuevo = new CSVBase(path).get(spark)
-      nuevo.show(20,false)
+      nuevo.show(20, false)
       result = Some(nuevo)
     } catch {
       case e: Exception => {
@@ -54,12 +57,36 @@ class SourceProcess(val spark: SparkSession, val params: Arguments) {
 
   def updateOldRecordsToMongo(sourceDF: DataFrame, MDMtableOldDF: DataFrame, source: String): Unit = {
     val MDMjoinToupdateDF = sourceDF.join(MDMtableOldDF, sourceDF.col("codsap") === MDMtableOldDF.col("codsap"), "inner")
-   // MDMjoinToupdateDF.show(20, false)
+    // MDMjoinToupdateDF.show(20, false)
     source match {
       case "comunicaciones" => MongoSpark.save(MDMjoinToupdateDF.comunicacionesApplyRules().write.mode("append"), writeConfig)
       case "webRedes" => MongoSpark.save(MDMjoinToupdateDF.webRedesApplyRules().write.mode("append"), writeConfig)
       case "sap" => MongoSpark.save(MDMjoinToupdateDF.sapApplyRules().write.mode("append"), writeConfig)
     }
+  }
+
+  def addingMaxColumnChar(dataFrame: DataFrame, source: String): DataFrame = {
+    val metadata = new MetadataBuilder().putLong("maxlength", 1500).build()
+    if (source == "webRedes") {
+      val dataframeClean = dataFrame.withColumn("desdescubremas003", dataFrame("desdescubremas003").as("desdescubremas003", metadata))
+        .withColumn("destip001", dataFrame("destip001").as("destip001", metadata))
+        .withColumn("destip002", dataFrame("destip002").as("destip002", metadata))
+        .withColumn("destip003", dataFrame("destip003").as("destip003", metadata))
+        .withColumn("destip004", dataFrame("destip004").as("destip004", metadata))
+        .withColumn("despaso001", dataFrame("despaso001").as("despaso001", metadata))
+        .withColumn("despaso002", dataFrame("despaso002").as("despaso002", metadata))
+        .withColumn("despaso003", dataFrame("despaso003").as("despaso003", metadata))
+        .withColumn("despaso004", dataFrame("despaso004").as("despaso004", metadata))
+        .withColumn("deswebredes", dataFrame("deswebredes").as("deswebredes", metadata))
+        .withColumn("desdescubremas002", dataFrame("desdescubremas002").as("desdescubremas002", metadata))
+        .withColumn("desdescubremas001", dataFrame("desdescubremas001").as("desdescubremas001", metadata))
+        .withColumn("destitulotip001", dataFrame("destitulotip001").as("destitulotip001", metadata))
+        .withColumn("destitulotip002", dataFrame("destitulotip002").as("destitulotip002", metadata))
+        .withColumn("destitulotip003", dataFrame("destitulotip003").as("destitulotip003", metadata))
+        .withColumn("destitulotip004", dataFrame("destitulotip004").as("destitulotip004", metadata))
+      dataframeClean
+    } else
+      dataFrame
   }
 
   def newDataframeFormat(dataFrame: DataFrame, source: String): DataFrame = {
