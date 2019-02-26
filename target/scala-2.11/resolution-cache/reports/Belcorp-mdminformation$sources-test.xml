@@ -7,7 +7,7 @@
 		revision="0.1"
 		conf="test"
 		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, pom, scala-tool"
-		date="20190221154413"/>
+		date="20190226185009"/>
 	<dependencies>
 		<module organisation="org.scalactic" name="scalactic_2.11">
 			<revision name="3.0.5" status="release" pubdate="20180129034638" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.scalatest.org" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="180">
@@ -1290,7 +1290,7 @@
 				<metadata-artifact status="no" details="" size="14453" time="0" location="C:\Users\jtaco\.ivy2\cache\commons-codec\commons-codec\ivy-1.12.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/commons-codec/commons-codec/1.12/commons-codec-1.12.pom"/>
 				<caller organisation="Belcorp" name="mdminformation$sources" conf="test, compile, runtime" rev="1.12" rev-constraint-default="1.12" rev-constraint-dynamic="1.12" callerrev="0.1"/>
 				<artifacts>
-					<artifact name="commons-codec" type="src" ext="jar" extra-classifier="sources" status="successful" details="" size="344285" time="1722" location="C:\Users\jtaco\.ivy2\cache\commons-codec\commons-codec\srcs\commons-codec-1.12-sources.jar">
+					<artifact name="commons-codec" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="344285" time="0" location="C:\Users\jtaco\.ivy2\cache\commons-codec\commons-codec\srcs\commons-codec-1.12-sources.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/commons-codec/commons-codec/1.12/commons-codec-1.12-sources.jar"/>
 					</artifact>
 				</artifacts>
