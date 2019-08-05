@@ -1,6 +1,6 @@
 //build servidor
 
-name := "MDMDatalake"
+name := "MDMDatalake-QA"
 
 version := "0.1"
 
