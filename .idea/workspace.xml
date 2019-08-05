@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ec2cf6fa-d478-45cd-882a-49dd66565cd0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.sbt" beforeDir="false" afterPath="$PROJECT_DIR$/build.sbt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.conf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/pe/com/belcorp/runMDM.scala" beforeDir="false" />
-    </list>
+    <list default="true" id="ec2cf6fa-d478-45cd-882a-49dd66565cd0" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/project/project/target/" />
@@ -175,10 +170,10 @@
         <option value="$PROJECT_DIR$/src/main/scala/pe/com/belcorp/util/DataframeUtil.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/pe/com/belcorp/util/AWSCredentials.scala" />
         <option value="$PROJECT_DIR$/src/main/resources/application.conf" />
-        <option value="$PROJECT_DIR$/src/main/scala/pe/com/belcorp/runMDM.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/pe/com/belcorp/tables/SourceProcess.scala" />
         <option value="$PROJECT_DIR$/build.sbt" />
         <option value="$PROJECT_DIR$/src/main/scala/pe/com/belcorp/util/SparkUtil.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/pe/com/belcorp/runMDM.scala" />
       </list>
     </option>
   </component>
@@ -272,7 +267,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1565034228474" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1565035737166" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../mdminformation-Local" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
