@@ -5,12 +5,12 @@ import com.amazonaws.auth.{ AWSSessionCredentials, InstanceProfileCredentialsPro
 case class AWSCredentials(token: String, accessKey: String, secretKey: String)
 
 object AWSCredentials {
-/*  def fetch(): AWSCredentials = {
+  def fetch(): AWSCredentials = {
     val provider = InstanceProfileCredentialsProvider.getInstance()
     val credentials = provider.getCredentials.asInstanceOf[AWSSessionCredentials]
     AWSCredentials(
       credentials.getSessionToken, credentials.getAWSAccessKeyId, credentials.getAWSSecretKey)
-  }*/
+  }
 }
 
 

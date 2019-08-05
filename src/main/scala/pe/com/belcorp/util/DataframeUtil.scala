@@ -29,9 +29,12 @@ object DataframeUtil {
         .getStringList("sap").asScala.toArray
         .map(x => col(x))
       val df1 = df.select(columnsToSelect: _*)
-        .withColumn("id", getIdS(col("codigo_material"), col("desc_material"), col("cod_grupo_articulo")))
-        .drop("desc_material")
-        .drop("cod_grupo_articulo")
+        .withColumn("id", getIdS(col("codsap"), col("desproductosap"), col("desgrupoarticulo")))
+        .withColumn("desnombreproducto",col("desproductosap"))
+        //.withColumn("codinsertado", lit("SAP"))
+        //.drop("desproductosap")
+        //.drop("desgrupoarticulo")
+        /*.withColumnRenamed("CodSap", "codsap")*/
       df1
     }
 
@@ -44,10 +47,19 @@ object DataframeUtil {
         .getConfig("sourcesApplyRules")
         .getStringList("sap").asScala.toArray
       val columns = df.columns.distinct
+      //("COLUMNAS OLD---------------------------------")
+      //columns.foreach(x=>println(x))
+      //println("COLUMNAS SAP------------------------")
+      //sapColumns.foreach(x=>println(x))
       val selectMatchColumns = columns.map { column =>
         if (sapColumns.contains(column)) {
+          //println("MATCH-------------------")
+          //println(column)
           column match {
-            case "_id" => col(s"old.$column").alias(s"$column")
+            case "_id" =>  println("ENTRO A LA REGLA")
+              col(s"old.$column").alias(s"$column")
+            case "desnombreproducto" => println("ENTRO A LA REGLA")
+              productNameRuleSAP(col(s"old.$column"), col(s"new.$column")).alias(s"$column")
             case _ => col(s"new.$column").alias(s"$column")
           }
         }
@@ -55,7 +67,13 @@ object DataframeUtil {
           col(s"old.$column").alias(s"$column") //columns of webredes or comuniaciones
         }
       }
+
       df.select(selectMatchColumns: _*)
+    }
+
+    def productNameRuleSAP = (colOld: Column, colNew: Column) => {
+          when((col("old.desnombreproducto") === "NA") || (col("old.desnombreproducto") === ""), colNew)
+            .otherwise(colOld)
     }
 
     //COMUNICACIONES
@@ -64,16 +82,19 @@ object DataframeUtil {
       val columnsToSelect = ConfigFactory.load().getConfig("sourcesSelect")
         .getStringList("comunicaciones").asScala.toArray
         .map(x => col(x))
-      val df1 = df.select(columnsToSelect: _*).withColumn("titulo_descubre_mas_1", col("beneficio_slogan"))
-        .withColumnRenamed("beneficio_slogan", "contenido_descripcion_1")
-        .withColumn("codigo_categoria", lit("CMS"))
-        .withColumn("talla_previa", getTallaPreviaC(col("desc_producto")))
+      val df1 = df.select(columnsToSelect: _*)
+        //.withColumnRenamed("destallamedidacatalogo","desproducto")
+        //.withColumnRenamed("desnombreelementocatalogo","desnombreproducto")
+//        .withColumn("destitulodescubremas001", col("desbeneficiosslogancatalogo"))
+//        .withColumnRenamed("desbeneficiosslogancatalogo", "desdescubremas001")
+//        .withColumn("codcategoria", lit("CMS"))
+        .withColumn("tallaprevia", getTallaPreviaC(col("destallamedidacatalogo")))
       df1
     }
 
     def getTallaPreviaC: UserDefinedFunction = udf((descProducto: String) => {
       if (org.apache.commons.lang3.StringUtils.containsIgnoreCase(descProducto, "Medidas")) {
-        descProducto.substring(descProducto.indexOf("Medidas") + 9, descProducto.length)
+        descProducto.substring(descProducto.indexOf("Medidas"), descProducto.length)
       }
       else descProducto.toString
     })
@@ -89,10 +110,10 @@ object DataframeUtil {
         if (comunicacionesColumns.contains(column)) {
           column match {
             case "_id" => col(s"old.$column").alias(s"$column")
-            case "nombre_producto" => productNameRuleC(col(s"old.$column"), col(s"new.$column")).alias(s"$column")
-            case "desc_producto" => productDescriptionRuleC(col(s"old.$column"), col(s"new.$column")).alias(s"$column")
-            case "titulo_descubre_mas_1" => titleRuleC(col(s"old.$column"), col(s"new.$column")).alias(s"$column")
-            case "contenido_descripcion_1" => contentRuleC(col(s"old.$column"), col(s"new.$column")).alias(s"$column")
+//            case "desnombreproducto" => productNameRuleC(col(s"old.$column"), col(s"new.$column")).alias(s"$column")
+//            case "desproducto" => productDescriptionRuleC(col(s"old.$column"), col(s"new.$column")).alias(s"$column")
+//            case "destitulodescubremas001" => titleRuleC(col(s"old.$column"), col(s"new.$column")).alias(s"$column")
+//            case "desdescubremas001" => contentRuleC(col(s"old.$column"), col(s"new.$column")).alias(s"$column")
             case _ => col(s"new.$column").alias(s"$column")
           }
         }
@@ -103,40 +124,46 @@ object DataframeUtil {
       df.select(selectMatchColumns: _*)
     }
 
-    def productNameRuleC: (Column, Column) => Column = (colOld: Column, colNew: Column) => {
-      when(col("old.codigo_categoria") === "CMS" || col("old.codigo_categoria") === "", colNew)
-        .otherwise(colOld)
-    }
+//    def productNameRuleC: (Column, Column) => Column = (colOld: Column, colNew: Column) => {
+//      when(col("old.codcategoria") === "CMS" || col("old.codcategoria") === "", colNew)
+//        .otherwise(colOld)
+//    }
 
-    def productDescriptionRuleC = (colOld: Column, colNew: Column) => {
-      when(col("old.codigo_categoria") === "CMS" || col("old.codigo_categoria") === "", colNew)
-        .otherwise(colOld)
-    }
-
-    def titleRuleC = (colOld: Column, colNew: Column) => {
-      when(col("old.codigo_categoria") === "CMS" || col("old.codigo_categoria") === "", colNew)
-        .otherwise(colOld)
-    }
-
-    def contentRuleC = (colOld: Column, colNew: Column) => {
-      when(col("old.codigo_categoria") === "CMS" || col("old.codigo_categoria") === "", colNew)
-        .otherwise(colOld)
-    }
+//    def productDescriptionRuleC = (colOld: Column, colNew: Column) => {
+//      when(col("old.codcategoria") === "CMS" || col("old.codcategoria") === "", colNew)
+//        .otherwise(colOld)
+//    }
+//
+//    def titleRuleC = (colOld: Column, colNew: Column) => {
+//      when(col("old.codcategoria") === "CMS" || col("old.codcategoria") === "", colNew)
+//        .otherwise(colOld)
+//    }
+//
+//    def contentRuleC = (colOld: Column, colNew: Column) => {
+//      when(col("old.codcategoria") === "CMS" || col("old.codcategoria") === "", colNew)
+//        .otherwise(colOld)
+//    }
 
     //WEBREDES
     def webRedesFormat(): DataFrame = {
       val columnsToSelect = ConfigFactory.load().getConfig("sourcesSelect")
-        .getStringList("comunicaciones").asScala.toArray
+        .getStringList("webRedes").asScala.toArray
         .map(x => col(x))
-      val df1 = df.select(columnsToSelect: _*).withColumn("link_video_1", getVideoLinkWR(col("link_video_1")))
-        .withColumn("link_video_2", getVideoLinkWR(col("link_video_2")))
-        .withColumn("link_video_3", getVideoLinkWR(col("link_video_3")))
-        .withColumn("link_video_4", getVideoLinkWR(col("link_video_4")))
+      val df1 = df.select(columnsToSelect: _*)
+        //.withColumnRenamed("codcategoriawebredes","codinsertado")
+        .withColumn("desnombreproducto",col("desnombreproductowebredes"))
+        //.withColumnRenamed("desnombreproductowebredes","desnombreproducto")
+//        .withColumnRenamed("deswebredes","desproducto")
+        .withColumn("deslinkvideoId001", getVideoLinkWR(col("deslinkvideo001")))
+        .withColumn("deslinkvideoId002", getVideoLinkWR(col("deslinkvideo002")))
+        .withColumn("deslinkvideoId003", getVideoLinkWR(col("deslinkvideo003")))
+        .withColumn("deslinkvideoId004", getVideoLinkWR(col("deslinkvideo004")))
+        .withColumn("deslinkvideoId005", getVideoLinkWR(col("deslinkvideo005")))
       df1
     }
 
     def getVideoLinkWR: UserDefinedFunction = udf(f = (videoLink: String) => {
-      val youtubeRgx = """https?://(?:[0-9a-zA-Z-]+\.)?(?:youtu\.be/|youtube\.com\S*[^\w\-\s])([\w \-]{11})(?=[^\w\-]|$)(?![?=&+%\w]*(?:[\'"][^<>]*>|</a>))[?=&+%\w-]*""".r
+      val youtubeRgx = """https?://(?:[0-9a-zA-Z-]+\.)?(?:youtu\.be/|youtube\.com\S*[^\w\-\s])([\w \-]{11})(?=[^\w\-]|$)(?![?=&+%\w]*(?:[\'"][^<>]*>|</a>))[?=&+%\w-./]*""".r
       videoLink match {
         case youtubeRgx(a) => s"$a".toString
         case _ => videoLink.toString
@@ -147,45 +174,45 @@ object DataframeUtil {
       //to modify, webRedesColumns coontiene columas ya formateadas despues del JOIN propias de wr y el match con comonuccaciones
       val webRedesColumns = ConfigFactory.load()
         .getConfig("sourcesApplyRules")
-        .getStringList("webredes").asScala.toArray
+        .getStringList("webRedes").asScala.toArray
       val columns = df.columns.distinct
       val selectMatchColumns = columns.map { column =>
         if (webRedesColumns.contains(column)) {
           column match {
             case "_id" => col(s"old.$column").alias(s"$column")
-            case "nombre_producto" => productNameRuleWR(col(s"old.$column"), col(s"new.$column")).alias(s"column")
-            case "desc_producto" => productDescriptionRuleWR(col(s"old.$column"), col(s"new.$column")).alias(s"$column")
-            case "titulo_descubre_mas_1" => titleRuleWR(col(s"old.$column"), col(s"new.$column")).alias(s"$column")
-            case "contenido_descripcion_1" => contentRuleWR(col(s"old.$column"), col(s"new.$column")).alias(s"$column")
+            case "desnombreproducto" => productNameRuleWR(col(s"old.$column"), col(s"new.$column")).alias(s"$column")
+//            case "desproducto" => productDescriptionRuleWR(col(s"old.$column"), col(s"new.$column")).alias(s"$column")
+//            case "destitulodescubremas001" => titleRuleWR(col(s"old.$column"), col(s"new.$column")).alias(s"$column")
+//            case "desdescubremas001" => contentRuleWR(col(s"old.$column"), col(s"new.$column")).alias(s"$column")
             case _ => col(s"new.$column").alias(s"$column")
           }
         }
         else {
-          col(s"old.${column}").alias(s"${column}") //columns of comunications
+          col(s"old.$column").alias(s"$column") //columns of comunications
         }
       }
       df.select(selectMatchColumns: _*)
     }
 
     def productNameRuleWR = (colOld: Column, colNew: Column) => {
-      when(col("new.codigo_categoria") !== "NA", colNew)
-        .otherwise(colOld)
+      when((col("new.desnombreproducto") === "NA") || (col("new.desnombreproducto") === ""), colOld)
+        .otherwise(colNew)
     }
 
-    def productDescriptionRuleWR = (colOld: Column, colNew: Column) => {
-      when(col("new.codigo_categoria") !== "NA", colNew)
-        .otherwise(colOld)
-    }
-
-    def titleRuleWR = (colOld: Column, colNew: Column) => {
-      when(col("new.codigo_categoria") !== "NA", colNew)
-        .otherwise(colOld)
-    }
-
-    def contentRuleWR = (colOld: Column, colNew: Column) => {
-      when(col("new.codigo_categoria") !== "NA", colNew)
-        .otherwise(colOld)
-    }
+//    def productDescriptionRuleWR = (colOld: Column, colNew: Column) => {
+//      when(col("new.codcategoria") !== "NA", colNew)
+//        .otherwise(colOld)
+//    }
+//
+//    def titleRuleWR = (colOld: Column, colNew: Column) => {
+//      when(col("new.codcategoria") !== "NA", colNew)
+//        .otherwise(colOld)
+//    }
+//
+//    def contentRuleWR = (colOld: Column, colNew: Column) => {
+//      when(col("new.codcategoria") !== "NA", colNew)
+//        .otherwise(colOld)
+//    }
   }
 
 }
