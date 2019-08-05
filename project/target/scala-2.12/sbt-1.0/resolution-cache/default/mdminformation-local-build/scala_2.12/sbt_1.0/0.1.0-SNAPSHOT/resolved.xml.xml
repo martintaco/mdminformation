@@ -4,7 +4,7 @@
 		module="mdminformation-local-build"
 		revision="0.1.0-SNAPSHOT"
 		status="integration"
-		publication="20190221154319"
+		publication="20190305121849"
 		e:sbtVersion="1.0" e:scalaVersion="2.12"
 	>
 		<description>

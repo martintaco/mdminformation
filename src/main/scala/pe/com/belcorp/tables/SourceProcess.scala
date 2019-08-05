@@ -21,7 +21,7 @@ class SourceProcess(val spark: SparkSession, val params: Arguments) {
   def processSource(csvDF: DataFrame, source: String): Unit = {
     val csvDFnewChar = addingMaxColumnChar(csvDF,source)
     //COMMENT WRITE TO RS TO TEST PARA QUE FUNCIONES EL INSERT Y CREATE TABLE
-    writeToRedshift(csvDFnewChar, ConfigFactory.load().getString(s"redshiftConnection.${params.env()}"), ConfigFactory.load().getString(s"tempS3Directory.${params.env()}"), ConfigFactory.load().getString(s"redshiftTables.$source"))
+    //writeToRedshift(csvDFnewChar, ConfigFactory.load().getString(s"redshiftConnection.${params.env()}"), ConfigFactory.load().getString(s"tempS3Directory.${params.env()}"), ConfigFactory.load().getString(s"redshiftTables.$source"))
     val sourceDF = newDataframeFormat(csvDF.na.fill(""), source) // uses empty  String instead of null values before the join
     sourceDF.show(20, false)
     val MDMtableDF = MongoSpark.load(spark, readConfig)
@@ -85,6 +85,9 @@ class SourceProcess(val spark: SparkSession, val params: Arguments) {
         .withColumn("destitulotip003", dataFrame("destitulotip003").as("destitulotip003", metadata))
         .withColumn("destitulotip004", dataFrame("destitulotip004").as("destitulotip004", metadata))
       dataframeClean
+    } else if (source == "comunicaciones") {
+      val dataframeClean = dataFrame.withColumn("desmaterialmedidacatalogo", dataFrame("desmaterialmedidacatalogo").as("desmaterialmedidacatalogo", metadata))
+      dataframeClean
     } else
       dataFrame
   }
@@ -107,7 +110,10 @@ class SourceProcess(val spark: SparkSession, val params: Arguments) {
 
   def writeToRedshift(sourceDF: DataFrame, jdbcURL: String, tempS3Dir: String, writeTable: String): Unit = {
     val id = "codsap"
-    val targetTable = s"fnc_mdm.$writeTable"
+    //Para QAS y PRD antiguo
+    //val targetTable = s"fnc_mdm.$writeTable"
+    //PARA PRD Semantix
+    val targetTable = s"fnc_analitico.$writeTable"
     val sourceTable = s"${targetTable}_source"
     val stagingTable = s"${targetTable}_staging"
     val getMatchRecords = s"INSERT INTO $stagingTable SELECT $sourceTable.* FROM $sourceTable JOIN $targetTable ON $targetTable.$id = $sourceTable.$id;"

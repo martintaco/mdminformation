@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MDMinformation.iml" filepath="$PROJECT_DIR$/.idea/modules/MDMinformation.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MDMinformation-build.iml" filepath="$PROJECT_DIR$/.idea/modules/MDMinformation-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MDMDatalake.iml" filepath="$PROJECT_DIR$/.idea/modules/MDMDatalake.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MDMDatalake-build.iml" filepath="$PROJECT_DIR$/.idea/modules/MDMDatalake-build.iml" />
     </modules>
   </component>
 </project>

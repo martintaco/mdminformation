@@ -4,7 +4,7 @@
 		module="mdminformation$sources"
 		revision="0.1"
 		status="integration"
-		publication="20190226185009"
+		publication="20190321095630"
 	/>
 	<configurations>
 		<conf name="compile" visibility="public" description=""/>
